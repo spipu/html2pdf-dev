@@ -59,7 +59,11 @@ cp /home/delivery/dev/scripts/conf/php.ini ${PHP_FOLDER}/cli/conf.d/99-provision
 HOUR=$(date +%H:%M:%S)
 echo "[${HOUR}]===[PROVISION][COMPOSER]==="
 
-wget -q https://getcomposer.org/download/latest-stable/composer.phar
+COMPOSER_URL="https://getcomposer.org/download/latest-stable/composer.phar"
+if (( $(echo "7.2 $PHP_VERSION" | awk '{print ($1 > $2)}') )); then
+  COMPOSER_URL="https://getcomposer.org/download/latest-2.2.x/composer.phar"
+fi
+wget -q "$COMPOSER_URL"
 mv ./composer.phar /usr/local/bin/composer
 chmod +x /usr/local/bin/composer
 
