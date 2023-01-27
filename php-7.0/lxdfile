@@ -1,0 +1,5 @@
+name=html2pdf-dev
+template=debian-9-stretch
+host=html2pdf-dev.lxd
+delivery-user=delivery
+mount=..:/home/delivery/dev
