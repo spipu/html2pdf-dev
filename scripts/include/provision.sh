@@ -43,7 +43,6 @@ apt-get -qq -y install \
     php${PHP_VERSION}-iconv \
     php${PHP_VERSION}-imagick \
     php${PHP_VERSION}-intl \
-    php${PHP_VERSION}-json \
     php${PHP_VERSION}-mbstring \
     php${PHP_VERSION}-readline \
     php${PHP_VERSION}-simplexml \
@@ -52,6 +51,10 @@ apt-get -qq -y install \
     php${PHP_VERSION}-xsl \
     php${PHP_VERSION}-zip \
     > /dev/null
+
+if (( $(echo "8.0 $PHP_VERSION" | awk '{print ($1 > $2)}') )); then
+  apt-get -qq -y install php${PHP_VERSION}-json > /dev/null
+fi
 
 rm -f ${PHP_FOLDER}/cli/conf.d/99-provision.ini
 cp /home/delivery/dev/scripts/conf/php.ini ${PHP_FOLDER}/cli/conf.d/99-provision.ini

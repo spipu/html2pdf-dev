@@ -2,4 +2,4 @@
 
 cd "$( dirname "${BASH_SOURCE[0]}" )"
 
-../scripts/init.sh "7.1"
+./test.sh "8.0"
