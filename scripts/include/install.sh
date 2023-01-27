@@ -3,6 +3,12 @@
 cd "$( dirname "${BASH_SOURCE[0]}" )"
 
 HOUR=$(date +%H:%M:%S)
+echo "[${HOUR}]===[INSTALL][CHECK VERSION]==="
+
+php -v
+composer --version
+
+HOUR=$(date +%H:%M:%S)
 echo "[${HOUR}]===[INSTALL][START]==="
 
 cd /home/delivery/dev/html2pdf
