@@ -22,7 +22,7 @@ echo "====[PHP $PHP_VERSION]========================"
 lxd-remove
 lxd-deploy
 
-ssh root@html2pdf-dev.lxd     /home/delivery/dev/scripts/include/provision.sh "$PHP_VERSION"
-ssh delivery@html2pdf-dev.lxd /home/delivery/dev/scripts/include/install.sh   "$PHP_VERSION"
-ssh delivery@html2pdf-dev.lxd /home/delivery/dev/scripts/include/test.sh      "$PHP_VERSION"
+ssh root@html2pdf-dev.lxd     /var/www/html2pdf-dev/scripts/include/provision.sh "$PHP_VERSION"
+ssh delivery@html2pdf-dev.lxd /var/www/html2pdf-dev/scripts/include/install.sh   "$PHP_VERSION"
+ssh delivery@html2pdf-dev.lxd /var/www/html2pdf-dev/scripts/include/test.sh      "$PHP_VERSION"
 

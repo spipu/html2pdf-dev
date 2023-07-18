@@ -56,8 +56,25 @@ if (( $(echo "8.0 $PHP_VERSION" | awk '{print ($1 > $2)}') )); then
   apt-get -qq -y install php${PHP_VERSION}-json > /dev/null
 fi
 
+HOUR=$(date +%H:%M:%S)
+echo "[${HOUR}]===[PROVISION][APACHE]==="
+apt-get -qq -y install apache2 libapache2-mod-php${PHP_VERSION} > /dev/null
+
+HOUR=$(date +%H:%M:%S)
+echo "[${HOUR}]===[PROVISION][CONFIGURE PHP]==="
+
 rm -f ${PHP_FOLDER}/cli/conf.d/99-provision.ini
-cp /home/delivery/dev/scripts/conf/php.ini ${PHP_FOLDER}/cli/conf.d/99-provision.ini
+rm -f ${PHP_FOLDER}/apache2/conf.d/99-provision.ini
+cp /var/www/html2pdf-dev/scripts/conf/php.ini ${PHP_FOLDER}/cli/conf.d/99-provision.ini
+cp /var/www/html2pdf-dev/scripts/conf/php.ini ${PHP_FOLDER}/apache2/conf.d/99-provision.ini
+
+
+HOUR=$(date +%H:%M:%S)
+echo "[${HOUR}]===[PROVISION][CONFIGURE APACHE]==="
+
+rm -f /etc/apache2/sites-available/000-default.conf
+cp /var/www/html2pdf-dev/scripts/conf/virtualhost.conf /etc/apache2/sites-available/000-default.conf
+systemctl restart apache2
 
 HOUR=$(date +%H:%M:%S)
 echo "[${HOUR}]===[PROVISION][COMPOSER]==="

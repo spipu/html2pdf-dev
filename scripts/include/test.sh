@@ -5,13 +5,13 @@ echo "[${HOUR}]===[TEST][CLEAN]==="
 
 PHP_VERSION="$1"
 
-mkdir -p /home/delivery/dev/results/$PHP_VERSION
-rm -f    /home/delivery/dev/results/$PHP_VERSION/*
+mkdir -p /var/www/html2pdf-dev/results/$PHP_VERSION
+rm -f    /var/www/html2pdf-dev/results/$PHP_VERSION/*
 
 HOUR=$(date +%H:%M:%S)
 echo "[${HOUR}]===[TEST][EXAMPLES]==="
 
-cd /home/delivery/dev/html2pdf/examples
+cd /var/www/html2pdf-dev/html2pdf/examples
 for PHP_SCRIPT in $(ls ./*.php);
 do
     PDF_FILE=`echo "$PHP_SCRIPT" | sed "s/\.php/\.pdf/g" | sed "s/\.\//\.\.\/\.\.\/results\/$PHP_VERSION\//g"`
@@ -22,7 +22,7 @@ done
 HOUR=$(date +%H:%M:%S)
 echo "[${HOUR}]===[TEST][PHPUNIT]==="
 
-cd /home/delivery/dev/html2pdf/
+cd /var/www/html2pdf-dev/html2pdf/
 ./vendor/bin/phpunit
 
 HOUR=$(date +%H:%M:%S)

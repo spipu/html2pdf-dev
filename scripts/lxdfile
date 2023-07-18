@@ -2,4 +2,4 @@ name=html2pdf-dev
 template=ubuntu-22_04-jammy
 host=html2pdf-dev.lxd
 delivery-user=delivery
-mount=..:/home/delivery/dev
+mount=..:/var/www/html2pdf-dev
